@@ -11,6 +11,8 @@ public class MinotaurBirthdayParty
         int mazeGuest = new Random().nextInt(0, NUM_GUESTS);
         Guest.setGuestInLabyrinth(mazeGuest);
 
+        long startTimeNanoseconds = System.nanoTime();
+
         for (int i = 0; i < NUM_GUESTS; i++)
         {
             guests[i] = new Guest(i);
@@ -28,7 +30,11 @@ public class MinotaurBirthdayParty
             guests[i].join();
         }
 
-        System.out.println("All guests have visited the labyrinth at least once.");
+        long endTimeNanoseconds = System.nanoTime();
+
+        long runTimeMilliseconds = (endTimeNanoseconds - startTimeNanoseconds) / 1000000;
+
+        System.out.println("All guests have visited the labyrinth at least once. Runtime was " + runTimeMilliseconds + " ms");
     }
 }
 
